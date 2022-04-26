@@ -43,11 +43,11 @@ export default {
       },
       rules: {
         username: [
-          { required: true, message: '请输入账户', trigger: 'blur' },
+          { required: true, message: '请输入用户名', trigger: 'blur' },
           {
-            min: 4,
-            max: 12,
-            message: '长度在 4 到 12 个字符',
+            min: 2,
+            max: 8,
+            message: '长度在  到 8 个字符',
             trigger: 'blur'
           }
         ],
