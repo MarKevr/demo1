@@ -23,7 +23,11 @@ import {
   ElPagination,
   ElDialog,
   ElTooltip,
-  ElMessageBox
+  ElMessageBox,
+  ElTag,
+  ElTree,
+  ElSelect,
+  ElOption
 } from 'element-plus'
 // import Vue from 'vue'
 export default (app) => {
@@ -52,5 +56,9 @@ export default (app) => {
   app.use(ElDialog)
   app.use(ElTooltip)
   app.use(ElMessageBox)
+  app.use(ElTag)
+  app.use(ElTree)
+  app.use(ElSelect)
+  app.use(ElOption)
 }
 // Vue.prototype.$message = Message

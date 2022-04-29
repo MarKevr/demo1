@@ -66,8 +66,8 @@
         <el-button type="primary" icon="el-icon-edit" size="mini" @click="editdialog(scope.row.id)">
         </el-button>
         <el-button type="danger" icon="el-icon-delete" size="mini" @click="open(scope.row.id)"></el-button>
-        <el-tooltip class="item" effect="dark" content="Top Center 提示文字" placement="top">
-          <el-button type="warning" icon="el-icon-s-tools" size="mini"></el-button>
+        <el-tooltip class="item" effect="dark" content="分配角色" placement="top">
+          <el-button type="warning" icon="el-icon-s-tools" size="mini" @click="AssignRoles(scope.row)"></el-button>
         </el-tooltip>
         </template>
       </el-table-column>
@@ -141,6 +141,29 @@
       <div class="clear-box"></div>
       </template>
     </el-dialog>
+    <!-- 分配角色 -->
+    <el-dialog
+      title="分配角色"
+      v-model="AssignRolesdialogVisible"
+      width="50%"
+      @close="resetAssignRoles()">
+      <template v-slot: footer class="dialog-footer">
+      <div class="add-list">
+        <p>当前的用户：{{userrole.username}}</p>
+        <p>当前的角色：{{userrole.role_name}}</p>
+        <p>当前的角色：
+          <el-select v-model="roleslistID" placeholder="请选择">
+          <el-option v-for="item in roleslist" :key="item.id" :label="item.roleName" :value="item.id"></el-option>
+          </el-select>
+        </p>
+      </div>
+      <div class="add-button">
+      <el-button @click="AssignRolesdialogVisible = false">取 消</el-button>
+      <el-button type="primary" @click="prevtRoles()">保 存</el-button>
+      </div>
+      <div class="clear-box"></div>
+      </template>
+    </el-dialog>
     </el-card>
   </div>
 </template>
@@ -203,7 +226,11 @@ export default {
           { required: true, message: '手机号不能为空', trigger: 'blur' },
           { min: 11, message: '请输入正确的手机号', trigger: 'blur' }
         ]
-      }
+      },
+      AssignRolesdialogVisible: false,
+      userrole: {},
+      roleslist: [],
+      roleslistID: ''
     }
   },
   created () {
@@ -290,6 +317,25 @@ export default {
       // if (res.meta.status !== 200) return this.message.error('删除用户失败')
       // this.message.success('删除用户成功')
       // this.getusers()
+    },
+    async AssignRoles (role) {
+      const { data: res } = await this.$http.get('roles')
+      if (res.meta.status !== 200) return this.$message.error('获取角色列表失败')
+      this.roleslist = res.data
+      this.AssignRolesdialogVisible = true
+      this.userrole = role
+    },
+    async prevtRoles () {
+      if (!this.roleslistID) return this.$message.error('请选择新的角色')
+      const { data: res } = await this.$http.put(`users/${this.userrole.id}/role`, { rid: this.roleslistID })
+      if (res.meta.status !== 200) return this.$message.error('角色修改失败')
+      this.$message.success('角色修改成功')
+      this.getusers()
+      this.AssignRolesdialogVisible = false
+    },
+    resetAssignRoles () {
+      this.roleslistID = ''
+      this.userrole = {}
     }
   }
 }
