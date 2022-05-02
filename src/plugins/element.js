@@ -27,7 +27,8 @@ import {
   ElTag,
   ElTree,
   ElSelect,
-  ElOption
+  ElOption,
+  ElCascader
 } from 'element-plus'
 // import Vue from 'vue'
 export default (app) => {
@@ -60,5 +61,6 @@ export default (app) => {
   app.use(ElTree)
   app.use(ElSelect)
   app.use(ElOption)
+  app.use(ElCascader)
 }
 // Vue.prototype.$message = Message

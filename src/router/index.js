@@ -5,6 +5,7 @@ import Welcome from '../components/Welcome'
 import User from '../components/user/User'
 import Roles from '../components/jurisdiction/Roles'
 import Rights from '../components/jurisdiction/Rights'
+import Cate from '../components/Commodity/Cate'
 
 const routes = [
   { path: '/', redirect: '/login' },
@@ -18,7 +19,8 @@ const routes = [
         { path: '/welcome', component: Welcome },
         { path: '/users', component: User },
         { path: '/roles', component: Roles },
-        { path: '/rights', component: Rights }
+        { path: '/rights', component: Rights },
+        { path: '/categories', component: Cate }
       ]
   }
 ]
