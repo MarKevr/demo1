@@ -6,3 +6,15 @@ html,body,#app{
     font-family: 'Courier New', Courier, monospace;
     min-width: 1366px;
 }
+.el-breadcrumb{
+    margin-bottom: 20px;
+}
+.add-list{
+  padding: 20px;
+}
+.add-button{
+  float: right;
+}
+.clear-box{
+  clear: right;
+}
