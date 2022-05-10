@@ -74,7 +74,7 @@
             <el-table-column type="expand">
               <template v-slot="scope">
                 <!-- 循环渲染的TAG标签 -->
-                <el-tag closable @close="handclose(i,scope.row)" v-for="(item, i) in scope.row.attr_vals" :key="i" style="margin:10px">{{item}}</el-tag>
+                <el-tag closable v-for="(item, i) in scope.row.attr_vals" :key="i" style="margin:10px" @close="handclose(i,scope.row)">{{item}}</el-tag>
                 <!-- 输入的文本框 -->
                   <el-input
                     class="input-new-tag"
@@ -213,7 +213,7 @@ export default {
       console.log(res.data)
       res.data.forEach(item => {
         item.attr_vals = item.attr_vals
-          ? item.attr_vals.split(' ') || item.attr_vals.split(',')
+          ? item.attr_vals.split(' ')
           : []
         // 可控制显示与隐藏
         item.inputVisible = false
@@ -275,6 +275,7 @@ export default {
       if (row.inputValue.trim().length === 0) {
         row.inputValue = ''
         row.inputVisible = true
+        return
       }
       row.attr_vals.push(row.inputValue.trim())
       row.inputValue = ''
@@ -295,9 +296,9 @@ export default {
     // 点击按钮，展示文本输入框
     showInput (row) {
       row.inputVisible = true
-      this.nextTick(_ => {
-        this.$refs.saveTagInput.$refs.input.focus()
-      })
+      // this.$nextTick(_ => {
+      //   this.$refs.saveTagInput.$refs.input.focus()
+      // })
     },
     handclose (i, row) {
       row.attr_vals.splice(i, 1)

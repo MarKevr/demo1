@@ -31,7 +31,12 @@ import {
   ElCascader,
   ElAlert,
   ElTabs,
-  ElTabPane
+  ElTabPane,
+  ElSteps,
+  ElStep,
+  ElCheckboxGroup,
+  ElCheckbox,
+  ElUpload
 } from 'element-plus'
 // import Vue from 'vue'
 export default (app) => {
@@ -68,5 +73,10 @@ export default (app) => {
   app.use(ElAlert)
   app.use(ElTabs)
   app.use(ElTabPane)
+  app.use(ElSteps)
+  app.use(ElStep)
+  app.use(ElCheckboxGroup)
+  app.use(ElCheckbox)
+  app.use(ElUpload)
 }
 // Vue.prototype.$message = Message
