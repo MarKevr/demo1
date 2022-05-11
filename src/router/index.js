@@ -9,6 +9,7 @@ import Cate from '../components/Commodity/Cate'
 import ProducList from '../components/Commodity/ProducLlist'
 import GoodsList from '../components/Commodity/goods_list'
 import Add from '../components/Commodity/Add'
+import Order from '../components/order/Order'
 
 const routes = [
   { path: '/', redirect: '/login' },
@@ -26,7 +27,8 @@ const routes = [
         { path: '/categories', component: Cate },
         { path: '/params', component: ProducList },
         { path: '/goods', component: GoodsList },
-        { path: '/goods/add', component: Add }
+        { path: '/goods/add', component: Add },
+        { path: '/orders', component: Order }
       ]
   }
 ]

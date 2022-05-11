@@ -11,7 +11,7 @@
       <!-- 导航搜索区域 -->
       <el-row :gutter="20">
         <el-col :span="8">
-        <el-input placeholder="请输入内容" v-model="input3">
+        <el-input placeholder="请输入内容">
         <template v-slot:append>
           <el-button solt:append icon="el-icon-search"></el-button>
         </template>
@@ -86,7 +86,7 @@ export default {
       },
       // 商品列表
       goodslist: [],
-      total: ''
+      total: 0
     }
   },
   created () {
