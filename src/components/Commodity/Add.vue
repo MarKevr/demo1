@@ -161,11 +161,8 @@ export default {
       const { data: res } = await this.$http.get('categories')
       if (res.meta.status !== 200) return this.$message.error('获取分类列表失败')
       this.cateList = res.data
-      console.log(this.cateList)
     },
-    handleChange () {
-      console.log(this.addForm.goods_cat)
-    },
+    handleChange () {},
     async tadclick () {
       if (this.activeindex === '1') {
         const { data: res } = await this.$http.get(`categories/${this.cateID}/attributes`, {
@@ -185,7 +182,6 @@ export default {
           params: { sel: 'only' }
         })
         if (res.meta.status !== 200) return this.$message.error('获取静态属性失败')
-        console.log(res.data)
         this.onlyTabDate = res.data
       }
     },
@@ -196,7 +192,6 @@ export default {
       this.addForm.pics.findIndex(x =>
         x.pic === filepath)
       this.addForm.pics.splice(i, 1)
-      console.log(this.addForm.pics)
     },
     handlePreview (file) {
       this.previewpath = file.response.data.url
@@ -206,7 +201,6 @@ export default {
       console.log(response)
       const picinfo = { pic: response.data.tmp_path }
       this.addForm.pics.push(picinfo)
-      console.log(this.addForm.pics)
     },
     add () {
       this.$refs.addFormRif.validate(async valid => {
@@ -222,8 +216,6 @@ export default {
           const newinfo = { attr_id: item.attr_id, attr_value: item.attr_vals }
           this.addForm.attrs.push(newinfo)
         })
-        console.log(this.addForm.attrs)
-        console.log(this.addFormLodsh.goods_cat)
         const { data: res } = await this.$http.post('goods',
           {
             goods_name: this.addForm.goods_name,

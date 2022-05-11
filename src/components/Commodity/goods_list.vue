@@ -97,7 +97,6 @@ export default {
     async gteGoodslist () {
       const { data: res } = await this.$http.get('goods', { params: this.queryInfo })
       if (res.meta.status !== 200) return this.$message.error('数据获取失败')
-      console.log(res.data)
       this.goodslist = res.data.goods
       this.total = res.data.total
     },

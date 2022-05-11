@@ -144,7 +144,6 @@ export default {
       if (res.meta.status !== 200) return this.$message.error('获取商品信息失败')
       this.categoriesList = res.data.result
       this.total = res.data.total
-      console.log(this.categoriesList)
     },
     // 当前页数
     handleCurrentChange (val) {

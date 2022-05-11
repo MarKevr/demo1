@@ -240,7 +240,6 @@ export default {
     async getusers () {
       const { data: res } = await this.$http.get('users', { params: this.UserList })
       if (res.meta.status !== 200) return this.$message.error('获取用户失败')
-      console.log(res)
       this.userlist = res.data.users
       this.total = res.data.total
     },
@@ -253,7 +252,6 @@ export default {
       this.$messgae.success('更新用户状态成功')
     },
     handleSizeChange (val) {
-      // console.log(`每页 ${val} 条`)
       this.UserList.pagesize = val
       this.getusers()
     },

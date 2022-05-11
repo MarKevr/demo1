@@ -193,7 +193,6 @@ export default {
       const { data: res } = await this.$http.get('categories', { parama: { type: 3 } })
       if (res.meta.status !== 200) return this.$message.error('获取数据失败')
       this.getparamsList = res.data
-      console.log(this.getparamsList)
     },
     // 级联选择框触发函数
     async handleChange () {
@@ -228,7 +227,6 @@ export default {
     },
     handleTabClick () {
       this.handleChange()
-      console.log(this.activeName)
     },
     resetdialog () {
       this.$refs.ruleForm.resetFields()
